@@ -80,10 +80,15 @@ function build_table() {
     var $tr = document.createElement('tr');
     for (var j = 0; j < columns; j++) {
       var $td = document.createElement('td');
+      $td.onclick = clickEvent;
       $tr.appendChild($td)
     }
     $table.appendChild($tr);
   }
+}
+
+function clickEvent(e){
+  alert('123123');
 }
 
 function checkNumberAndGteZero(value) {
