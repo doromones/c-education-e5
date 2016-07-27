@@ -19,10 +19,10 @@ window.addEventListener('load', function () {
   $startNewGame = document.getElementById('startNewGame');
   $table = document.getElementById('table');
 
-  build_fields();
+  build_table();
 });
 
-function build_fields() {
+function build_table() {
   var rows = checkNumberAndGteZero($rows.value);
   var columns = checkNumberAndGteZero($cols.value);
   var total_fields = rows * columns;
@@ -47,4 +47,8 @@ function checkNumberAndGteZero(value) {
     throw new Error(value + ' must be int and gte zero')
   }
   return value;
+}
+
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
