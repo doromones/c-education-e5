@@ -9,6 +9,7 @@ var images = [
   'https://goo.gl/YkorhO'
 ];
 var $rows, $cols, $setField, $curScore, $bestScore, $startNewGame, $table;
+var selectedCells = [];
 
 window.addEventListener('load', function () {
   setVars();
@@ -18,10 +19,10 @@ window.addEventListener('load', function () {
 function init() {
   build_table();
   fill_table();
-  setTimeout(hide_all_img, 2000);
+  setTimeout(hideAllImg, 2000);
 }
 
-function hide_all_img(){
+function hideAllImg(){
   getAllTd().map(function(el){
     return el.getElementsByTagName('img')[0]
   }).forEach(function(img){
@@ -88,7 +89,22 @@ function build_table() {
 }
 
 function clickEvent(e){
-  alert('123123');
+  var $td = e.currentTarget;
+  var $img = $td.children[0];
+  if (selectedCells.length === 2){
+    var first = selectedCells[0];
+    var second = selectedCells[1];
+    if (first.src === second.src) {
+      alert('насчитываю бонусы');
+    } else {
+      first.classList.add('hide');
+      second.classList.add('hide');
+    }
+    selectedCells = []
+  } else {
+    $img.classList.remove('hide');
+    selectedCells.push($img);
+  }
 }
 
 function checkNumberAndGteZero(value) {
