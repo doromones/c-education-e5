@@ -1,0 +1,30 @@
+.score-line{
+    margin: 20px 0;
+}
+.score-line .scr{
+    margin: 0 15px 0;
+    padding: 10px;
+    width: 50px;
+    border-radius: 3px;
+    border: 1px solid #444;
+}
+.matching-grid{
+    border-collapse: collapse;
+}
+.matching-grid tr td{
+    padding: 20px;
+    border: 1px solid #444;
+    background-color: #fff;
+}
+
+.matching-grid tr td img{
+    width: 80px;
+    height: 80px;
+}
+.start-game{
+    margin: 20px 0;
+    padding: 10px 30px;
+    font-size: 18px;
+    border: 1px solid #999;
+    border-radius: 3px;
+}
