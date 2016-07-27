@@ -11,6 +11,16 @@ var images = [
 var $rows, $cols, $setField, $curScore, $bestScore, $startNewGame, $table;
 
 window.addEventListener('load', function () {
+  setVars();
+  init();
+});
+
+function init() {
+  build_table();
+  fill_table();
+}
+
+function setVars(){
   $rows = document.getElementById('rows');
   $cols = document.getElementById('cols');
   $setField = document.getElementById('setField');
@@ -18,9 +28,35 @@ window.addEventListener('load', function () {
   $bestScore = document.getElementById('bestScore');
   $startNewGame = document.getElementById('startNewGame');
   $table = document.getElementById('table');
+}
 
-  build_table();
-});
+function fill_table() {
+  var tds = getAllTd();
+  while (true) {
+    if (tds.length === 0) {break;}
+    var img_url = images[getRandomInt(0, images.length -1)];
+    setImageToCol(tds.getRandomEl(), img_url);
+    setImageToCol(tds.getRandomEl(), img_url);
+  }
+}
+
+function setImageToCol($cell, img_url){
+  var $img = document.createElement('img');
+  $img.src = img_url;
+  $cell.appendChild($img);
+}
+
+function getAllTd(){
+  var rows = $table.rows;
+  var td = [];
+  for (var i=0; i < rows.length; i++) {
+    var cells = rows[i].cells;
+    for (var j=0; j < cells.length; j++) {
+      td.push(cells[j]);
+    }
+  }
+  return td;
+}
 
 function build_table() {
   var rows = checkNumberAndGteZero($rows.value);
@@ -34,7 +70,7 @@ function build_table() {
   for (var i = 0; i < rows; i++) {
     var $tr = document.createElement('tr');
     for (var j = 0; j < columns; j++) {
-      var $td = document.createElement('tr');
+      var $td = document.createElement('td');
       $tr.appendChild($td)
     }
     $table.appendChild($tr);
@@ -52,3 +88,12 @@ function checkNumberAndGteZero(value) {
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
+Array.prototype.getRandomEl = function(){
+  if (this.length === 0) return null;
+  var index = getRandomInt(0, this.length -1);
+  console.log(index, this.length, this);
+  var el = this[index];
+  this.splice(index, 1);
+  return el;
+};
