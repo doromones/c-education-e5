@@ -12,6 +12,8 @@
     border-collapse: collapse;
 }
 .matching-grid tr td{
+    height: 85px;
+    width: 80px;
     padding: 20px;
     border: 1px solid #444;
     background-color: #fff;
@@ -27,4 +29,7 @@
     font-size: 18px;
     border: 1px solid #999;
     border-radius: 3px;
+}
+.hide {
+    display: none;
 }

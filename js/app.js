@@ -18,6 +18,15 @@ window.addEventListener('load', function () {
 function init() {
   build_table();
   fill_table();
+  setTimeout(hide_all_img, 2000);
+}
+
+function hide_all_img(){
+  getAllTd().map(function(el){
+    return el.getElementsByTagName('img')[0]
+  }).forEach(function(img){
+    img.classList.add('hide');
+  })
 }
 
 function setVars(){
