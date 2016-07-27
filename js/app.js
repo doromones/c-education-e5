@@ -92,7 +92,6 @@ function getRandomInt(min, max) {
 Array.prototype.getRandomEl = function(){
   if (this.length === 0) return null;
   var index = getRandomInt(0, this.length -1);
-  console.log(index, this.length, this);
   var el = this[index];
   this.splice(index, 1);
   return el;
